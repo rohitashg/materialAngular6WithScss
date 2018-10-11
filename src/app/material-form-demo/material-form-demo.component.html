@@ -1,0 +1,69 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="fill-remaining-space"></span>
+      <span class="">Angular 6 with Material</span>
+      <span class="fill-remaining-space"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <form [formGroup]="form">
+      <div class="example-container">
+        <mat-grid-list cols="2" rowHeight="300px">
+          <mat-grid-tile>
+            <div class="controls-container">
+              <mat-form-field>
+                <input matInput placeholder="Full Name" formControlName="fullname">
+                <mat-error>Please enter full name.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Enter Email" formControlName="email" name="email">
+                <mat-error>Please enter valid email.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Mobile" formControlName="mobile">
+                <mat-error>Please enter valid mobile.</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="City" formControlName="city">
+                <mat-error>Please enter city.</mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+              <div class="controls-container">
+                <div class="add-bottom-padding">
+                    <mat-radio-group class="example-radio-group" formControlName="gender">
+                      <mat-radio-button class="example-radio-button" value="1">Male</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="2">Female</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="3">Other</mat-radio-button>
+                    </mat-radio-group>                    
+                </div>
+
+                <mat-form-field>
+                    <mat-select [(value)]="selected" formControlName="department" placeholder="Department">
+                      <mat-option>None</mat-option>
+                      <ng-container *ngFor="let dept of department">
+                          <mat-option value="{{dept.id}}">{{dept.name}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input readonly [max]="maxDate" formControlName="hiredate" matInput [matDatepicker]="picker" placeholder="Hire date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="add-bottom-padding">
+                    <mat-checkbox formControlName="isParmanent">Parmanent Employee</mat-checkbox>
+                </div>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" [disabled]="form.invalid">Submit</button>                    
+                    <button type="button" mat-raised-button color="accent" (click)="onClear();">Reset</button>
+                  </div>
+              </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+  </form>
+</div>

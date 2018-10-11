@@ -1,0 +1,16 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="fill-remaining-space"></span>
+      <button mat-button [matMenuTriggerFor]="animals" color="warn">Pages</button>
+      <span class="fill-remaining-space"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<mat-menu #animals="matMenu">
+  <button mat-menu-item routerLink="/home">Home</button>
+  <button mat-menu-item routerLink="/register">Register</button>
+  <button mat-menu-item routerLink="/login" *ngIf="isLoggedIn">Login</button>  
+  <button mat-menu-item routerLink="/m-demo">Material Demos</button>
+  <button mat-menu-item (click)="logout();" *ngIf="!isLoggedIn">Logout</button>
+</mat-menu> 
